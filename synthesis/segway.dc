@@ -1,0 +1,61 @@
+read_file -format sverilog Segway.sv
+read_file -format sverilog A2D_Intf.sv
+read_file -format sverilog auth_blk.sv
+read_file -format sverilog auth_SM.sv
+read_file -format sverilog balance_cntrl.sv
+read_file -format sverilog inert_intf.sv
+read_file -format sverilog inertial_integrator.sv
+read_file -format sverilog mtr_drv.sv
+read_file -format sverilog PID_fastsim.sv
+read_file -format sverilog piezo_drv.sv
+read_file -format sverilog PWM11.sv
+read_file -format sverilog rst_synch.sv
+read_file -format sverilog segwaymath.sv
+read_file -format sverilog SPI_mnrch.sv
+read_file -format sverilog steer_en.sv
+read_file -format sverilog UART_rx.sv
+
+set current_design Segway
+
+write -format verilog -output Segway.vg
+create_clock -name "clk" -period 3 -waveform {0 1.5} {clk}
+set_dont_touch_network [find port clk]
+
+compile -map_effort high
+
+set prim_inputs [remove_from_collection [all_inputs] [find port clk]]
+set_input_delay  -clock clk 0.25 $prim_inputs
+
+set_driving_cell -lib_cell NAND2X2_RVT -library saed32rvt_tt0p85v25c $prim_inputs
+set_drive 0.0001 rst_n
+
+set_output_delay -clock clk 0.35 [all_outputs]
+set_load 0.05 [all_outputs]
+
+set_wire_load_model -name 16000 -library saed32rvt_tt0p85v25c
+set_max_transition 0.1 [current_design]
+
+set_clock_uncertainty 0.15 clk
+set_fix_hold clk
+
+set_multicycle_path 2 -setup -from [find pin iNEMO/ptch_*_reg*/CLK]
+set_multicycle_path 2 -setup -from [find pin iNEMO/AZ*_reg*/CLK]
+set_multicycle_path 2 -hold -from [find pin iNEMO/ptch_*_reg*/CLK]
+set_multicycle_path 2 -hold -from [find pin iNEMO/AZ*_reg*/CLK]
+
+#set_multicycle_path 2 -setup -from [find pin iBAL/iCNTRL/ss_tmr_reg*/CLK]
+#set_multicycle_path 2 -hold -from [find pin iBAL/iCNTRL/ss_tmr_reg*/CLK]
+
+ungroup -all -flatten
+compile -incremental_mapping -map_effort high
+#compile -map_effort high
+
+report_timing -delay max
+report_timing -delay min
+report_area 
+report_area > area.rpt
+
+write -format verilog Segway -output Segway.vg
+
+
+
