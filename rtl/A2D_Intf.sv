@@ -2,6 +2,8 @@
 module A2D_intf( 
     input  logic nxt, // indicating the next channel to read
     input  logic MISO,
+    input  logic clk,
+    input  logic rst_n,
 
     output logic [11:0] lft_ld,
     output logic [11:0] rght_ld,
@@ -15,6 +17,8 @@ module A2D_intf(
     logic [15:0] rd_data; // data read from SPI_mnrch, which is A2D data (lft/rght load, steer pot, batt)
     logic done_signal; // SPI_mnrch is done with transaction
     logic wrt; // Initialize the SPI_mnrch 
+    logic [1:0] round_robin;
+    logic update; 
     
 SPI_mnrch spi_mnrch_inst (
     .clk(clk),
@@ -95,11 +99,10 @@ always_ff @(posedge clk or negedge rst_n) begin
         state <= next_state;
 end
 
-logic [1:0] round_robin;
-logic update; 
+
 always_comb begin 
     wrt = 1'b0;
-    wrt_wdata = 16'h0000;
+    wrt_data = 16'h0000;
     update = 1'b0;
     next_state = state; 
 
