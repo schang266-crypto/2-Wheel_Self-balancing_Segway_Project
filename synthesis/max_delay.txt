@@ -1,0 +1,70 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : Segway
+Version: X-2025.06
+Date   : Tue Jun  2 23:50:02 2026
+****************************************
+
+Operating Conditions: tt0p85v25c   Library: saed32rvt_tt0p85v25c
+Wire Load Model Mode: enclosed
+
+  Startpoint: iBAL/iPID/long_tmr_reg[26]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: iBAL/isegwaymath/PID_ss_ext_reg[11]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Segway             16000                 saed32rvt_tt0p85v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  iBAL/iPID/long_tmr_reg[26]/CLK (DFFARX1_RVT)            0.00       0.00 r
+  iBAL/iPID/long_tmr_reg[26]/Q (DFFARX1_RVT)              0.19       0.19 r
+  iBAL/isegwaymath/mult_14/U124/Y (AND2X1_RVT)            0.09       0.29 r
+  iBAL/isegwaymath/mult_14/U15/Y (XNOR2X1_RVT)            0.13       0.42 f
+  iBAL/isegwaymath/mult_14/S2_2_5/S (FADDX1_RVT)          0.17       0.59 r
+  iBAL/isegwaymath/mult_14/S2_3_4/CO (FADDX1_RVT)         0.12       0.71 r
+  iBAL/isegwaymath/mult_14/S2_4_4/CO (FADDX1_RVT)         0.13       0.85 r
+  iBAL/isegwaymath/mult_14/S2_5_4/S (FADDX1_RVT)          0.18       1.03 f
+  iBAL/isegwaymath/mult_14/S2_6_3/S (FADDX1_RVT)          0.17       1.20 r
+  iBAL/isegwaymath/mult_14/S2_7_2/CO (FADDX1_RVT)         0.12       1.32 r
+  iBAL/isegwaymath/mult_14/S2_8_2/CO (FADDX1_RVT)         0.13       1.45 r
+  iBAL/isegwaymath/mult_14/S2_9_2/CO (FADDX1_RVT)         0.13       1.59 r
+  iBAL/isegwaymath/mult_14/S2_10_2/S (FADDX1_RVT)         0.18       1.76 f
+  iBAL/isegwaymath/mult_14/S4_1/S (FADDX1_RVT)            0.17       1.94 r
+  U156/Y (XOR2X2_RVT)                                     0.12       2.06 f
+  iBAL/isegwaymath/mult_14/FS_1/U47/Y (NAND2X0_RVT)       0.08       2.14 r
+  U163/Y (OAI21X2_RVT)                                    0.12       2.26 f
+  iBAL/isegwaymath/mult_14/FS_1/U34/Y (AO21X1_RVT)        0.09       2.35 f
+  iBAL/isegwaymath/mult_14/FS_1/U19/Y (AO21X1_RVT)        0.08       2.44 f
+  iBAL/isegwaymath/mult_14/FS_1/U18/Y (AO21X1_RVT)        0.08       2.51 f
+  iBAL/isegwaymath/mult_14/FS_1/U17/Y (AOI21X1_RVT)       0.10       2.62 r
+  iBAL/isegwaymath/mult_14/FS_1/U15/Y (OA21X1_RVT)        0.07       2.69 r
+  U141/Y (XOR3X2_RVT)                                     0.08       2.77 f
+  iBAL/isegwaymath/PID_ss_ext_reg[11]/D (DFFARX1_RVT)     0.01       2.78 f
+  data arrival time                                                  2.78
+
+  clock clk (rise edge)                                   3.00       3.00
+  clock network delay (ideal)                             0.00       3.00
+  clock uncertainty                                      -0.15       2.85
+  iBAL/isegwaymath/PID_ss_ext_reg[11]/CLK (DFFARX1_RVT)
+                                                          0.00       2.85 r
+  library setup time                                     -0.06       2.79
+  data required time                                                 2.79
+  --------------------------------------------------------------------------
+  data required time                                                 2.79
+  data arrival time                                                 -2.78
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+1

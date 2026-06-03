@@ -1,0 +1,50 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay min
+        -max_paths 1
+Design : Segway
+Version: X-2025.06
+Date   : Tue Jun  2 23:50:02 2026
+****************************************
+
+Operating Conditions: tt0p85v25c   Library: saed32rvt_tt0p85v25c
+Wire Load Model Mode: enclosed
+
+  Startpoint: iRST/q1_reg/CLK
+              (internal path startpoint clocked by clk)
+  Endpoint: iRST/rst_n_reg
+            (falling edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Segway             16000                 saed32rvt_tt0p85v25c
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (fall edge)                    1.50       1.50
+  clock network delay (ideal)              0.00       1.50
+  input external delay                     0.00       1.50 f
+  iRST/q1_reg/CLK (DFFNARX1_RVT)           0.00       1.50 f
+  iRST/q1_reg/Q (DFFNARX1_RVT)             0.14       1.64 r
+  iRST/rst_n_reg/D (DFFNARX2_RVT)          0.01       1.65 r
+  data arrival time                                   1.65
+
+  clock clk (fall edge)                    1.50       1.50
+  clock network delay (ideal)              0.00       1.50
+  clock uncertainty                        0.15       1.65
+  iRST/rst_n_reg/CLK (DFFNARX2_RVT)        0.00       1.65 f
+  library hold time                       -0.01       1.64
+  data required time                                  1.64
+  -----------------------------------------------------------
+  data required time                                  1.64
+  data arrival time                                  -1.65
+  -----------------------------------------------------------
+  slack (MET)                                         0.01
+
+
+1
