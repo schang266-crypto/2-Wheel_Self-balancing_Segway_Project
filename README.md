@@ -1,6 +1,6 @@
 # 2-Wheel_Self-balancing_Segway_Project
 # Project Overview
-  This project implements the digital control system for a two-wheeled, self-balancing "Segway" style device. The system is designed to independently drive left and right motors forward or in reverse to maintain platform balance based on pitch readings. Additionally, it supports user steering via a slide potentiometer, detects rider presence and balance using floor-mounted load cells, and features Bluetooth Low Energy (BLE) integration for secure rider authentication.  
+This project implements the digital control system for a two-wheeled, self-balancing "Segway" style device. The system is designed to independently drive left and right motors forward or in reverse to maintain platform balance based on pitch readings through the sensors. Additionally, it supports user steering via a slide potentiometer, detects rider presence and balance using floor-mounted load cells, and features Bluetooth Low Energy (BLE) integration for secure rider authentication. To ensure rider safety and provide immediate system feedback, the architecture also incorporates a piezoelectric audio subsystem that broadcasts distinct musical fanfares for critical alerts, including overspeed conditions, low battery warnings, and system readiness.
 
 <img width="393" height="478" alt="Screenshot 2026-07-06 at 4 29 51 PM" src="https://github.com/user-attachments/assets/e927574f-6b7d-433e-902a-ad6d40173db5" />
 
