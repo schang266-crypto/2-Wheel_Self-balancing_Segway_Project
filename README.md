@@ -16,7 +16,7 @@ The top-level module (Segway.sv) serves as the synthesized digital core of the d
 # Hardware Module Descriptions
 
 ## UART Communication & Authentication Subsystem
-These four modules form the secure interface of the Segway, handling external serial communication and system authorization, operating at a baud rate of 9600. Together, they manage everything from bit-level serial transport to high-level command processing and security validation.
+These three modules form the secure interface of the Segway, handling external serial communication and system authorization, operating at a baud rate of 9600. Together, they manage everything from bit-level serial transport to high-level command processing and security validation.
 
 ### UART_rx
 Utilizes a shift register to sample the incoming serial bitstream and assemble it into 8-bit parallel data. Its state machine logic governs the transition from waiting for a start bit, counting through the 8 data bits, and validating the stop bit before asserting a data-ready flag. It also includes double-flopping to prevent metastability.
