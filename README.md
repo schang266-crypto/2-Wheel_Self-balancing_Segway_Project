@@ -19,13 +19,13 @@ The top-level module (Segway.sv) serves as the synthesized digital core of the d
 These four modules form the secure interface of the Segway, handling external serial communication and system authorization, operating at a baud rate of 9600. Together, they manage everything from bit-level serial transport to high-level command processing and security validation.
 
 ### UART_rx
-    Utilizes a shift register to sample the incoming serial bitstream and assemble it into 8-bit parallel data. Its state machine logic governs the transition from waiting for a start bit, counting through the 8 data bits, and validating the stop bit before asserting a data-ready flag. It also includes double-flopping to prevent metastability.
+Utilizes a shift register to sample the incoming serial bitstream and assemble it into 8-bit parallel data. Its state machine logic governs the transition from waiting for a start bit, counting through the 8 data bits, and validating the stop bit before asserting a data-ready flag. It also includes double-flopping to prevent metastability.
 
 ### UART_tx
-    Functions in reverse by loading 8-bit parallel data into a shift register and shifting it out bit-by-bit onto the serial TX line. Its state machine logic automatically structures the frame by outputting the start bit, sequencing the data bits, and appending the stop bit to maintain protocol compliance.
+Functions in reverse by loading 8-bit parallel data into a shift register and shifting it out bit-by-bit onto the serial TX line. Its state machine logic automatically structures the frame by outputting the start bit, sequencing the data bits, and appending the stop bit to maintain protocol compliance.
 
 ### auth_SM (Authentication State Machine)
-    Handles rider authorization by communicating with a BLE module over UART. It Powers up the balance control system when a valid 'G' (0x47) command is received from the authorized app, while safely shuts down the system when an 'S' (0x53) disconnect command is received and the load cells indicate the rider has stepped off the platform.  
+Handles rider authorization by communicating with a BLE module over UART. It Powers up the balance control system when a valid 'G' (0x47) command is received from the authorized app, while safely shuts down the system when an 'S' (0x53) disconnect command is received and the load cells indicate the rider has stepped off the platform.  
 
 
 ## Analog-to-Digital (A/D) Data Acquisition Subsystem
