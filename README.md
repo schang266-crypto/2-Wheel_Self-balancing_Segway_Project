@@ -11,11 +11,9 @@
 
 
 ## Top-Level Architecture
-
     The top-level module (Segway.sv) serves as the synthesized digital core of the device. It acts as the central hub, integrating various subsystems to process physical sensor inputs (inertial, analog-to-digital, and UART) and translate them into Motor PWM controls and audible piezo warnings.
 
 ## Hardware Module Descriptions
-
 ## UART Communication & Authentication Subsystem
     These four modules form the secure interface of the Segway, handling external serial communication and system authorization, operating at a baud rate of 9600. Together, they manage everything from bit-level serial transport to high-level command processing and security validation.
 
